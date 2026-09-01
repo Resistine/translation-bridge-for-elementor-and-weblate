@@ -156,29 +156,29 @@ Yes. Any system that supports gettext POT/PO and preserves `msgctxt` can potenti
 * Added explicit HTML translator guidance to POT entries.
 * Added strict HTML tag/attribute sequence validation during PO import.
 
-= 0.1.5 =
+= 2026.9.1 =
 * Added an Export language selector when Polylang is active.
 * Preselects the Polylang default language while still allowing All languages.
 * Filters exported Elementor documents to the selected language.
 * Keeps the stable `messages.pot` filename and adds an `X-Source-Language` header.
 
-= 0.1.4 =
+= 2026.8.4 =
 * Excluded underscore-prefixed Elementor editor/internal settings such as `_title`.
 
-= 0.1.3 =
+= 2026.8.3 =
 * Tightened technical HTML/CSS/Elementor filtering.
 * Added the local **View details** modal sourced from `readme.txt`.
 
-= 0.1.2 =
+= 2026.8.2 =
 * Filtered markup-only and common HTML/CSS enum values.
 
-= 0.1.1 =
+= 2026.8.1 =
 * Added GPL-2.0-or-later licensing and WordPress.org-style package metadata.
 
-= 0.1.0 =
+= 2026.8.0 =
 * Initial experimental release.
 
 == Upgrade Notice ==
 
-= 0.1.6 =
+= 2026.9.1 =
 Recommended for Weblate workflows: cleaner translation catalogs, PO-safe line breaks, safer HTML imports and optional page-title export.

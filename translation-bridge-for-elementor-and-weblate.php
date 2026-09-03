@@ -9,7 +9,7 @@
  * Author:            Resistine
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       translation-bridge-for-elementor-weblate
+ * Text Domain:       translation-bridge-for-elementor-and-weblate
  *
  * @package TranslationBridgeForElementorWeblate
  * @copyright 2026 Resistine
@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 final class EWB_Elementor_Weblate_Bridge {
     const VERSION   = '0.1.6';
-    const MENU_SLUG = 'translation-bridge-for-elementor-weblate';
+    const MENU_SLUG = 'translation-bridge-for-elementor-and-weblate';
 
     private static $instance = null;
 
@@ -44,8 +44,8 @@ final class EWB_Elementor_Weblate_Bridge {
 
     public function admin_menu() {
         add_management_page(
-            __( 'Translation Bridge for Elementor and Weblate', 'translation-bridge-for-elementor-weblate' ),
-            __( 'Elementor → Weblate', 'translation-bridge-for-elementor-weblate' ),
+            __( 'Translation Bridge for Elementor and Weblate', 'translation-bridge-for-elementor-and-weblate' ),
+            __( 'Elementor → Weblate', 'translation-bridge-for-elementor-and-weblate' ),
             'manage_options',
             self::MENU_SLUG,
             array( $this, 'render_admin_page' )
@@ -82,8 +82,8 @@ final class EWB_Elementor_Weblate_Bridge {
         $links[] = sprintf(
             '<a href="%1$s" class="thickbox open-plugin-details-modal" aria-label="%2$s">%3$s</a>',
             esc_url( $url ),
-            esc_attr__( 'View details about Translation Bridge for Elementor and Weblate', 'translation-bridge-for-elementor-weblate' ),
-            esc_html__( 'View details', 'translation-bridge-for-elementor-weblate' )
+            esc_attr__( 'View details about Translation Bridge for Elementor and Weblate', 'translation-bridge-for-elementor-and-weblate' ),
+            esc_html__( 'View details', 'translation-bridge-for-elementor-and-weblate' )
         );
         return $links;
     }
@@ -197,8 +197,8 @@ final class EWB_Elementor_Weblate_Bridge {
         $type             = isset( $_GET['ewb_type'] ) ? sanitize_key( $_GET['ewb_type'] ) : 'success';
         ?>
         <div class="wrap">
-            <h1><?php esc_html_e( 'Translation Bridge for Elementor and Weblate', 'translation-bridge-for-elementor-weblate' ); ?></h1>
-            <p><?php esc_html_e( 'Export Elementor content as gettext POT for Weblate and import translated PO files into corresponding Polylang pages.', 'translation-bridge-for-elementor-weblate' ); ?></p>
+            <h1><?php esc_html_e( 'Translation Bridge for Elementor and Weblate', 'translation-bridge-for-elementor-and-weblate' ); ?></h1>
+            <p><?php esc_html_e( 'Export Elementor content as gettext POT for Weblate and import translated PO files into corresponding Polylang pages.', 'translation-bridge-for-elementor-and-weblate' ); ?></p>
 
             <?php if ( $notice ) : ?>
                 <div class="notice notice-<?php echo esc_attr( 'error' === $type ? 'error' : ( 'warning' === $type ? 'warning' : 'success' ) ); ?> is-dismissible"><p><?php echo esc_html( $notice ); ?></p></div>
@@ -207,58 +207,58 @@ final class EWB_Elementor_Weblate_Bridge {
             <table class="widefat striped" style="max-width:760px;margin:18px 0;"><tbody>
                 <tr><td><strong>Elementor</strong></td><td><?php echo $elementor ? '✓ active' : '✗ required'; ?></td></tr>
                 <tr><td><strong>Polylang</strong></td><td><?php echo $polylang ? '✓ active' : '— optional for export; required for automatic import mapping'; ?></td></tr>
-                <tr><td><strong><?php esc_html_e( 'Elementor documents found', 'translation-bridge-for-elementor-weblate' ); ?></strong></td><td><?php echo esc_html( number_format_i18n( count( $documents ) ) ); ?></td></tr>
+                <tr><td><strong><?php esc_html_e( 'Elementor documents found', 'translation-bridge-for-elementor-and-weblate' ); ?></strong></td><td><?php echo esc_html( number_format_i18n( count( $documents ) ) ); ?></td></tr>
             </tbody></table>
 
             <hr>
-            <h2><?php esc_html_e( '1. Export to Weblate', 'translation-bridge-for-elementor-weblate' ); ?></h2>
+            <h2><?php esc_html_e( '1. Export to Weblate', 'translation-bridge-for-elementor-and-weblate' ); ?></h2>
             <?php if ( $elementor ) : ?>
                 <form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
                     <input type="hidden" name="action" value="ewb_export_pot">
                     <?php wp_nonce_field( 'ewb_export_pot' ); ?>
 
                     <?php if ( $polylang && $languages ) : ?>
-                        <p><label for="ewb_export_lang"><strong><?php esc_html_e( 'Export language', 'translation-bridge-for-elementor-weblate' ); ?></strong></label><br>
+                        <p><label for="ewb_export_lang"><strong><?php esc_html_e( 'Export language', 'translation-bridge-for-elementor-and-weblate' ); ?></strong></label><br>
                         <select id="ewb_export_lang" name="export_lang">
-                            <option value=""><?php esc_html_e( 'All languages', 'translation-bridge-for-elementor-weblate' ); ?></option>
+                            <option value=""><?php esc_html_e( 'All languages', 'translation-bridge-for-elementor-and-weblate' ); ?></option>
                             <?php foreach ( $languages as $lang ) : ?>
                                 <option value="<?php echo esc_attr( $lang['slug'] ); ?>" <?php selected( $default_language, $lang['slug'] ); ?>><?php echo esc_html( $lang['name'] . ' (' . $lang['slug'] . ')' ); ?></option>
                             <?php endforeach; ?>
                         </select></p>
-                        <p class="description"><?php esc_html_e( 'Only Elementor documents assigned to the selected Polylang language will be exported. The default language is selected initially.', 'translation-bridge-for-elementor-weblate' ); ?></p>
+                        <p class="description"><?php esc_html_e( 'Only Elementor documents assigned to the selected Polylang language will be exported. The default language is selected initially.', 'translation-bridge-for-elementor-and-weblate' ); ?></p>
                     <?php endif; ?>
 
-                    <p><label><input type="checkbox" name="export_post_titles" value="1"> <?php esc_html_e( 'Export WordPress post/page titles', 'translation-bridge-for-elementor-weblate' ); ?></label></p>
-                    <p class="description"><?php esc_html_e( 'Off by default so imports do not rename administrative translated pages such as “Home - Polski”. Elementor headings are exported regardless.', 'translation-bridge-for-elementor-weblate' ); ?></p>
+                    <p><label><input type="checkbox" name="export_post_titles" value="1"> <?php esc_html_e( 'Export WordPress post/page titles', 'translation-bridge-for-elementor-and-weblate' ); ?></label></p>
+                    <p class="description"><?php esc_html_e( 'Off by default so imports do not rename administrative translated pages such as “Home - Polski”. Elementor headings are exported regardless.', 'translation-bridge-for-elementor-and-weblate' ); ?></p>
 
-                    <p><label for="ewb_post_ids"><strong><?php esc_html_e( 'Post IDs', 'translation-bridge-for-elementor-weblate' ); ?></strong></label><br>
-                    <input id="ewb_post_ids" name="post_ids" type="text" class="regular-text" placeholder="<?php esc_attr_e( 'Leave empty to export all matching Elementor content', 'translation-bridge-for-elementor-weblate' ); ?>"></p>
-                    <p class="description"><?php esc_html_e( 'Optional comma-separated IDs. The language and Post ID filters are combined.', 'translation-bridge-for-elementor-weblate' ); ?></p>
-                    <?php submit_button( __( 'Download messages.pot', 'translation-bridge-for-elementor-weblate' ), 'primary', 'submit', false ); ?>
+                    <p><label for="ewb_post_ids"><strong><?php esc_html_e( 'Post IDs', 'translation-bridge-for-elementor-and-weblate' ); ?></strong></label><br>
+                    <input id="ewb_post_ids" name="post_ids" type="text" class="regular-text" placeholder="<?php esc_attr_e( 'Leave empty to export all matching Elementor content', 'translation-bridge-for-elementor-and-weblate' ); ?>"></p>
+                    <p class="description"><?php esc_html_e( 'Optional comma-separated IDs. The language and Post ID filters are combined.', 'translation-bridge-for-elementor-and-weblate' ); ?></p>
+                    <?php submit_button( __( 'Download messages.pot', 'translation-bridge-for-elementor-and-weblate' ), 'primary', 'submit', false ); ?>
                 </form>
             <?php else : ?>
-                <div class="notice notice-error inline"><p><?php esc_html_e( 'Activate Elementor before exporting.', 'translation-bridge-for-elementor-weblate' ); ?></p></div>
+                <div class="notice notice-error inline"><p><?php esc_html_e( 'Activate Elementor before exporting.', 'translation-bridge-for-elementor-and-weblate' ); ?></p></div>
             <?php endif; ?>
 
             <hr>
-            <h2><?php esc_html_e( '2. Import from Weblate', 'translation-bridge-for-elementor-weblate' ); ?></h2>
+            <h2><?php esc_html_e( '2. Import from Weblate', 'translation-bridge-for-elementor-and-weblate' ); ?></h2>
             <?php if ( $elementor && $polylang ) : ?>
                 <form method="post" enctype="multipart/form-data" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
                     <input type="hidden" name="action" value="ewb_import_po">
                     <?php wp_nonce_field( 'ewb_import_po' ); ?>
-                    <p><label for="ewb_target_lang"><strong><?php esc_html_e( 'Target language', 'translation-bridge-for-elementor-weblate' ); ?></strong></label><br>
-                    <select id="ewb_target_lang" name="target_lang" required><option value=""><?php esc_html_e( 'Select language…', 'translation-bridge-for-elementor-weblate' ); ?></option>
+                    <p><label for="ewb_target_lang"><strong><?php esc_html_e( 'Target language', 'translation-bridge-for-elementor-and-weblate' ); ?></strong></label><br>
+                    <select id="ewb_target_lang" name="target_lang" required><option value=""><?php esc_html_e( 'Select language…', 'translation-bridge-for-elementor-and-weblate' ); ?></option>
                     <?php foreach ( $languages as $lang ) : ?><option value="<?php echo esc_attr( $lang['slug'] ); ?>"><?php echo esc_html( $lang['name'] . ' (' . $lang['slug'] . ')' ); ?></option><?php endforeach; ?>
                     </select></p>
-                    <p><label for="ewb_po_file"><strong><?php esc_html_e( 'Translated PO file', 'translation-bridge-for-elementor-weblate' ); ?></strong></label><br>
+                    <p><label for="ewb_po_file"><strong><?php esc_html_e( 'Translated PO file', 'translation-bridge-for-elementor-and-weblate' ); ?></strong></label><br>
                     <input id="ewb_po_file" name="po_file" type="file" accept=".po,text/x-gettext-translation,text/plain" required></p>
-                    <p><label><input type="checkbox" name="create_missing" value="1" checked> <?php esc_html_e( 'Create missing Polylang translations as drafts by cloning the Elementor layout', 'translation-bridge-for-elementor-weblate' ); ?></label></p>
-                    <p><label><input type="checkbox" name="sync_layout" value="1"> <?php esc_html_e( 'Overwrite existing target Elementor layouts from the source before applying translations', 'translation-bridge-for-elementor-weblate' ); ?></label></p>
-                    <p class="description"><?php esc_html_e( 'Leave overwrite off unless target element IDs no longer match the source.', 'translation-bridge-for-elementor-weblate' ); ?></p>
-                    <?php submit_button( __( 'Import translations', 'translation-bridge-for-elementor-weblate' ), 'primary', 'submit', false ); ?>
+                    <p><label><input type="checkbox" name="create_missing" value="1" checked> <?php esc_html_e( 'Create missing Polylang translations as drafts by cloning the Elementor layout', 'translation-bridge-for-elementor-and-weblate' ); ?></label></p>
+                    <p><label><input type="checkbox" name="sync_layout" value="1"> <?php esc_html_e( 'Overwrite existing target Elementor layouts from the source before applying translations', 'translation-bridge-for-elementor-and-weblate' ); ?></label></p>
+                    <p class="description"><?php esc_html_e( 'Leave overwrite off unless target element IDs no longer match the source.', 'translation-bridge-for-elementor-and-weblate' ); ?></p>
+                    <?php submit_button( __( 'Import translations', 'translation-bridge-for-elementor-and-weblate' ), 'primary', 'submit', false ); ?>
                 </form>
             <?php else : ?>
-                <div class="notice notice-warning inline"><p><?php esc_html_e( 'Automatic import requires Polylang. Export remains available with Elementor alone.', 'translation-bridge-for-elementor-weblate' ); ?></p></div>
+                <div class="notice notice-warning inline"><p><?php esc_html_e( 'Automatic import requires Polylang. Export remains available with Elementor alone.', 'translation-bridge-for-elementor-and-weblate' ); ?></p></div>
             <?php endif; ?>
         </div>
         <?php
@@ -304,7 +304,7 @@ final class EWB_Elementor_Weblate_Bridge {
 
     public function handle_export() {
         if ( ! current_user_can( 'manage_options' ) ) {
-            wp_die( esc_html__( 'Access denied.', 'translation-bridge-for-elementor-weblate' ) );
+            wp_die( esc_html__( 'Access denied.', 'translation-bridge-for-elementor-and-weblate' ) );
         }
         check_admin_referer( 'ewb_export_pot' );
         if ( ! $this->elementor_available() ) {
@@ -595,7 +595,7 @@ final class EWB_Elementor_Weblate_Bridge {
 
     public function handle_import() {
         if ( ! current_user_can( 'manage_options' ) ) {
-            wp_die( esc_html__( 'Access denied.', 'translation-bridge-for-elementor-weblate' ) );
+            wp_die( esc_html__( 'Access denied.', 'translation-bridge-for-elementor-and-weblate' ) );
         }
         check_admin_referer( 'ewb_import_po' );
         if ( ! $this->elementor_available() || ! $this->polylang_available() ) {

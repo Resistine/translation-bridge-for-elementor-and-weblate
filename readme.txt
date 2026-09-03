@@ -1,7 +1,9 @@
-=== Translation Bridge for Elementor and Weblate ===
+=== Translation Bridge for Elementor Weblate ===
+Contributors: resistine
 Tags: elementor, weblate, translation, polylang, localization
 Requires at least: 6.4
-Stable tag: 0.1.6
+Tested up to: 7.1
+Stable tag: 2026.9.4
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -186,12 +188,3 @@ Recommended for Weblate workflows: cleaner translation catalogs, PO-safe line br
 = 2026.9.4 =
 Just some WordPress bureaucracy.
 
-=== Translation Bridge for Elementor & Weblate ===
-Contributors: resistine
-Tags: elementor, weblate, translation, polylang
-Requires at least: 6.5
-Tested up to: 7.1
-Requires PHP: 8.0
-Stable tag: 0.1.0
-License: GPLv2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html

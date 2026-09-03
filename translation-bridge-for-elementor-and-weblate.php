@@ -3,6 +3,7 @@
  * Plugin Name:       Translation Bridge for Elementor and Weblate
  * Description:       Export translatable Elementor content to Gettext POT for Weblate and import translated PO files into Polylang translations.
  * Version:           2026.9.4
+ * Tested up to:      7.1
  * Requires at least: 6.4
  * Requires PHP:      7.4
  * Requires Plugins:  elementor

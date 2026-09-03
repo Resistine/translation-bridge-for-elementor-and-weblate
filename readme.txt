@@ -183,11 +183,14 @@ Yes. Any system that supports gettext POT/PO and preserves `msgctxt` can potenti
 = 2026.9.1 =
 Recommended for Weblate workflows: cleaner translation catalogs, PO-safe line breaks, safer HTML imports and optional page-title export.
 
+= 2026.9.4 =
+Just some WordPress bureaucracy.
+
 === Translation Bridge for Elementor & Weblate ===
 Contributors: resistine
 Tags: elementor, weblate, translation, polylang
 Requires at least: 6.5
-Tested up to: 6.8
+Tested up to: 7.1
 Requires PHP: 8.0
 Stable tag: 0.1.0
 License: GPLv2 or later
